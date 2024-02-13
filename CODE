@@ -1,0 +1,61 @@
+void setup(){
+ Serial.begin(9600);
+ pinMode(8,OUTPUT);//Buzzer
+ pinMode(9,OUTPUT);//yellow led
+ pinMode(10,OUTPUT);//red led
+ pinMode(5,INPUT); //ir1
+ pinMode(6,INPUT);// ir2
+ pinMode(7,INPUT);// pir
+
+}
+void loop()
+{
+ if(digitalRead(6)==LOW)
+ {
+ digitalWrite(10,HIGH);
+ if(digitalRead(7)==HIGH)
+ {
+  digitalWrite(8,HIGH);
+ delay(1000);
+ digitalWrite(8,LOW);
+ }
+ else if(digitalRead(7)==LOW)
+ {
+ digitalWrite(8,LOW);
+ }
+ }
+
+ if(digitalRead(5)==LOW && digitalRead(6)==HIGH &&
+digitalRead(7)==LOW)
+ {
+ digitalWrite(9,HIGH);
+ digitalWrite(10,LOW);
+ digitalWrite(8,LOW);
+ }
+ //else if(digitalRead(5)==HIGH && digitalRead(6)==LOW &&
+digitalRead(7)==LOW)
+ {
+ //digitalWrite(10,HIGH);
+ //digitalWrite(9,LOW);
+ //digitalWrite(8,LOW);
+ }
+ //else if(digitalRead(5)==HIGH && digitalRead(6)==LOW
+&& digitalRead(7)==HIGH)
+ {
+ //digitalWrite(10,HIGH);
+ //digitalWrite(8,HIGH);
+ //digitalWrite(9,LOW);
+ }
+ if(digitalRead(5)==HIGH)
+ {
+ digitalWrite(9,LOW);
+ }
+ if(digitalRead(6)==HIGH)
+ {
+ digitalWrite(10,LOW);
+ }
+ if(digitalRead(7)==LOW)
+ {
+ digitalWrite(8,LOW);
+ }
+}
